@@ -12,32 +12,31 @@ const content = `
       </div>
       <div class="form-group">
         <input type="checkbox" id="insightDie" name="insightDie" value="1">
-        <label for="insightDie">Risk Your Mind to Succeed</label>
+        <label for="insightDie" style="color:#bf0000;">Risk Your Mind to Succeed</label>
       </div>
     </form>
 `;
 
-const riskDieColor = "#bf0000"
-const baseDieColor = "#000000"
+const riskDieColor = "#bf0000";
+const baseDieColor = "#000000";
 function getDiceForOutput(dieNumber, colorHex) {
     switch (dieNumber) {
         case "1":
-            return `<i class="fas fa-dice-one" style="color:${colorHex}; font-size: 2em;"></i>`
+            return `<i class="fas fa-dice-one" style="color:${colorHex}; font-size: 2em;"></i>`;
         case "2":
-            return `<i class="fas fa-dice-two" style="color:${colorHex}; font-size: 2em;"></i>`
+            return `<i class="fas fa-dice-two" style="color:${colorHex}; font-size: 2em;"></i>`;
         case "3":
-            return `<i class="fas fa-dice-three" style="color:${colorHex}; font-size: 2em;"></i>`
+            return `<i class="fas fa-dice-three" style="color:${colorHex}; font-size: 2em;"></i>`;
         case "4":
-            return `<i class="fas fa-dice-four" style="color:${colorHex}; font-size: 2em;"></i>`
+            return `<i class="fas fa-dice-four" style="color:${colorHex}; font-size: 2em;"></i>`;
         case "5":
-            return `<i class="fas fa-dice-five" style="color:${colorHex}; font-size: 2em;"></i>`
+            return `<i class="fas fa-dice-five" style="color:${colorHex}; font-size: 2em;"></i>`;
         case "6":
-            return `<i class="fas fa-dice-six" style="color:${colorHex}; font-size: 2em;"></i>`
+            return `<i class="fas fa-dice-six" style="color:${colorHex}; font-size: 2em;"></i>`;
         default:
-            console.error("Error in the getDiceForOutput, bad die number used.")
-            break;
+            console.error("Error in the getDiceForOutput, bad die number used.");
     }
-}
+};
 
 async function asyncDialog({
     title = "",
@@ -59,6 +58,7 @@ async function asyncDialog({
                             let hdRoll = await new Roll('1d6').evaluate({ async: true });
                             dice.push({
                                 name: "Human Die",
+                                dieColor: baseDieColor,
                                 isRisk: !!parseInt(html.find('input[name="humanDie"]').val()),
                                 rollVal: hdRoll.result
                             });
@@ -68,6 +68,7 @@ async function asyncDialog({
                             let odRoll = await new Roll('1d6').evaluate({ async: true });
                             dice.push({
                                 name: "Occupational Die",
+                                dieColor: baseDieColor,
                                 isRisk: !!parseInt(html.find('input[name="occupationalDie"]').val()),
                                 rollVal: odRoll.result
                             });
@@ -77,6 +78,7 @@ async function asyncDialog({
                             let idRoll = await new Roll('1d6').evaluate({ async: true });
                             dice.push({
                                 name: "Insight Die",
+                                dieColor: riskDieColor,
                                 isRisk: !!parseInt(html.find('input[name="insightDie"]').val()),
                                 rollVal: idRoll.result
                             });
@@ -85,11 +87,7 @@ async function asyncDialog({
                         let diceOutput = ""
 
                         dice.forEach(die => {
-                            if (die.isRisk) {
-                                diceOutput = diceOutput.concat(getDiceForOutput(die.rollVal, riskDieColor), " ");
-                            } else {
-                                diceOutput = diceOutput.concat(getDiceForOutput(die.rollVal, baseDieColor), " ");
-                            }
+                            diceOutput = diceOutput.concat(getDiceForOutput(die.rollVal, die.dieColor), " ");
                         });
 
                         ChatMessage.create({
