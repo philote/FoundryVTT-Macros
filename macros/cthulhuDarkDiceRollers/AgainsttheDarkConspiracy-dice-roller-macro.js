@@ -2,40 +2,40 @@ const title = "Action Roll";
 const content = `
     <form class="flexcol">
         <div class="form-group">
-            <input type="checkbox" id="baseDie" name="baseDie" value="0" checked>
+            <input type="checkbox" id="baseDie" name="baseDie" checked>
             <label for="baseDie">Always start with 1d6</label>
         </div>
         <div class="form-group">
-            <input type="checkbox" id="expertiseDie" name="expertiseDie" value="0">
+            <input type="checkbox" id="expertiseDie" name="expertiseDie">
             <label for="expertiseDie"> With Expertise</label>
         </div>
         <div class="form-group">
-            <input type="checkbox" id="stressDie" name="stressDie" value="1">
+            <input type="checkbox" id="stressDie" name="stressDie">
             <label for="stressDie" style="color:#029c00;">Risk Stress to Succeed</label>
         </div>
         <div class="form-group">
-            <input type="checkbox" id="bonusDie" name="bonusDie" value="0">
+            <input type="checkbox" id="bonusDie" name="bonusDie">
             <label for="bonusDie">Bonus Die</label>
         </div>
         <p><b>Take Them Out Risk Dice</b></p>
         <div class="form-group">
-            <input type="checkbox" id="threatHarmDie" name="threatHarmDie" value="0">
+            <input type="checkbox" id="threatHarmDie" name="threatHarmDie">
             <label for="threatHarmDie" style="color:#bf0000;">Threat is able to do you harm</label>
         </div>
         <div class="form-group">
-            <input type="checkbox" id="threatSupernaturalDie" name="threatSupernaturalDie" value="0">
+            <input type="checkbox" id="threatSupernaturalDie" name="threatSupernaturalDie">
             <label for="threatSupernaturalDie" style="color:#bf0000;">Threat is Supernatural</label>
         </div>
         <div class="form-group">
-            <input type="checkbox" id="outnumberedDie" name="outnumberedDie" value="0">
+            <input type="checkbox" id="outnumberedDie" name="outnumberedDie">
             <label for="outnumberedDie" style="color:#bf0000;">If you are outnumbered</label>
         </div>
         <div class="form-group">
-            <input type="checkbox" id="weaponDie" name="weaponDie" value="0">
+            <input type="checkbox" id="weaponDie" name="weaponDie">
             <label for="weaponDie" style="color:#bf0000;">Using a weapon with the heavy or explode tag</label>
         </div>
         <div class="form-group">
-            <input type="checkbox" id="SupernaturalPowersDie" name="SupernaturalPowersDie" value="0">
+            <input type="checkbox" id="SupernaturalPowersDie" name="SupernaturalPowersDie">
             <label for="SupernaturalPowersDie" style="color:#bf0000;">Threat is Supernatural with any Powers</label>
         </div>
     </form>
@@ -84,7 +84,8 @@ async function asyncDialog({
                             dice.push({
                                 name: "Base Die",
                                 dieColor: baseDieColor,
-                                isRisk: !!parseInt(html.find('input[name="baseDie"]').val()),
+                                isStress: false,
+                                isRisk: false,
                                 rollVal: hdRoll.result
                             });
                         };
@@ -94,7 +95,8 @@ async function asyncDialog({
                             dice.push({
                                 name: "Expertise Die",
                                 dieColor: baseDieColor,
-                                isRisk: !!parseInt(html.find('input[name="expertiseDie"]').val()),
+                                isStress: false,
+                                isRisk: false,
                                 rollVal: odRoll.result
                             });
                         };
@@ -104,7 +106,8 @@ async function asyncDialog({
                             dice.push({
                                 name: "Stress Die",
                                 dieColor: riskDieColor,
-                                isRisk: !!parseInt(html.find('input[name="stressDie"]').val()),
+                                isStress: true,
+                                isRisk: false,
                                 rollVal: idRoll.result
                             });
                         };
@@ -114,7 +117,8 @@ async function asyncDialog({
                             dice.push({
                                 name: "Bonus Die",
                                 dieColor: baseDieColor,
-                                isRisk: !!parseInt(html.find('input[name="bonusDie"]').val()),
+                                isStress: false,
+                                isRisk: false,
                                 rollVal: idRoll.result
                             });
                         };
@@ -126,7 +130,8 @@ async function asyncDialog({
                             dice.push({
                                 name: "Threat Harm Die",
                                 dieColor: takeThemOutDieColor,
-                                isRisk: !!parseInt(html.find('input[name="threatHarmDie"]').val()),
+                                isStress: false,
+                                isRisk: true,
                                 rollVal: idRoll.result
                             });
                         };
@@ -136,7 +141,8 @@ async function asyncDialog({
                             dice.push({
                                 name: "Threat Supernatural Die",
                                 dieColor: takeThemOutDieColor,
-                                isRisk: !!parseInt(html.find('input[name="threatSupernaturalDie"]').val()),
+                                isStress: false,
+                                isRisk: true,
                                 rollVal: idRoll.result
                             });
                         };
@@ -146,7 +152,8 @@ async function asyncDialog({
                             dice.push({
                                 name: "Out Numbered Die",
                                 dieColor: takeThemOutDieColor,
-                                isRisk: !!parseInt(html.find('input[name="outnumberedDie"]').val()),
+                                isStress: false,
+                                isRisk: true,
                                 rollVal: idRoll.result
                             });
                         };
@@ -156,7 +163,8 @@ async function asyncDialog({
                             dice.push({
                                 name: "Weapon Die",
                                 dieColor: takeThemOutDieColor,
-                                isRisk: !!parseInt(html.find('input[name="weaponDie"]').val()),
+                                isStress: false,
+                                isRisk: true,
                                 rollVal: idRoll.result
                             });
                         };
@@ -166,7 +174,8 @@ async function asyncDialog({
                             dice.push({
                                 name: "Supernatural Powers Die",
                                 dieColor: takeThemOutDieColor,
-                                isRisk: !!parseInt(html.find('input[name="SupernaturalPowersDie"]').val()),
+                                isStress: false,
+                                isRisk: true,
                                 rollVal: idRoll.result
                             });
                         };
