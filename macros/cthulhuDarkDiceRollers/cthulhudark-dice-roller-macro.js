@@ -1,3 +1,44 @@
+const title = "Action Roll";
+
+const content = `
+    <form class="flexcol">
+      <div class="form-group">
+        <input type="checkbox" id="humanDie" name="humanDie" value="0">
+        <label for="humanDie"> Within Human Capabilities</label>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" id="occupationalDie" name="occupationalDie" value="0">
+        <label for="occupationalDie"> With Occupational Expertice</label>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" id="insightDie" name="insightDie" value="1">
+        <label for="insightDie">Risk Your Mind to Succeed</label>
+      </div>
+    </form>
+`;
+
+const riskDieColor = "#bf0000"
+const baseDieColor = "#000000"
+function getDiceForOutput(dieNumber, colorHex) {
+    switch (dieNumber) {
+        case "1":
+            return `<i class="fas fa-dice-one" style="color:${colorHex}; font-size: 2em;"></i>`
+        case "2":
+            return `<i class="fas fa-dice-two" style="color:${colorHex}; font-size: 2em;"></i>`
+        case "3":
+            return `<i class="fas fa-dice-three" style="color:${colorHex}; font-size: 2em;"></i>`
+        case "4":
+            return `<i class="fas fa-dice-four" style="color:${colorHex}; font-size: 2em;"></i>`
+        case "5":
+            return `<i class="fas fa-dice-five" style="color:${colorHex}; font-size: 2em;"></i>`
+        case "6":
+            return `<i class="fas fa-dice-six" style="color:${colorHex}; font-size: 2em;"></i>`
+        default:
+            console.error("Error in the getDiceForOutput, bad die number used.")
+            break;
+    }
+}
+
 async function asyncDialog({
     title = "",
     content = ""
@@ -45,11 +86,9 @@ async function asyncDialog({
 
                         dice.forEach(die => {
                             if (die.isRisk) {
-                                console.log(`1: ${riskDiceImages[die.rollVal - 1]}`);
-                                diceOutput = diceOutput.concat(riskDiceImages[die.rollVal - 1], " ");
+                                diceOutput = diceOutput.concat(getDiceForOutput(die.rollVal, riskDieColor), " ");
                             } else {
-                                console.log(`2: ${diceImages[die.rollVal - 1]}`);
-                                diceOutput = diceOutput.concat(diceImages[die.rollVal - 1], " ");
+                                diceOutput = diceOutput.concat(getDiceForOutput(die.rollVal, baseDieColor), " ");
                             }
                         });
 
@@ -73,38 +112,5 @@ async function asyncDialog({
         }).render(true);
     });
 }
-// define title, content
-const title = "Action Roll";
-const content = `
-    <form class="flexcol">
-      <div class="form-group">
-        <input type="checkbox" id="humanDie" name="humanDie" value="0">
-        <label for="humanDie"> Within Human Capabilities</label>
-      </div>
-      <div class="form-group">
-        <input type="checkbox" id="occupationalDie" name="occupationalDie" value="0">
-        <label for="occupationalDie"> With Occupational Expertice</label>
-      </div>
-      <div class="form-group">
-        <input type="checkbox" id="insightDie" name="insightDie" value="1">
-        <label for="insightDie">Risk Your Mind to Succeed</label>
-      </div>
-    </form>
-`;
-const diceImages = [
-    '<i class="fas fa-dice-one" style="font-size: 2em;"></i>',
-    '<i class="fas fa-dice-two" style="font-size: 2em;"></i>',
-    '<i class="fas fa-dice-three" style="font-size: 2em;"></i>',
-    '<i class="fas fa-dice-four" style="font-size: 2em;"></i>',
-    '<i class="fas fa-dice-five" style="font-size: 2em;"></i>',
-    '<i class="fas fa-dice-six" style="font-size: 2em;"></i>'
-];
-const riskDiceImages = [
-    '<i class="fas fa-dice-one" style="color:#bf0000; font-size: 2em;"></i>',
-    '<i class="fas fa-dice-two" style="color:#bf0000; font-size: 2em;"></i>',
-    '<i class="fas fa-dice-three" style="color:#bf0000; font-size: 2em;"></i>',
-    '<i class="fas fa-dice-four" style="color:#bf0000; font-size: 2em;"></i>',
-    '<i class="fas fa-dice-five" style="color:#bf0000; font-size: 2em;"></i>',
-    '<i class="fas fa-dice-six" style="color:#bf0000; font-size: 2em;"></i>'
-];
+
 let myReturnValue = await asyncDialog({ title, content });
