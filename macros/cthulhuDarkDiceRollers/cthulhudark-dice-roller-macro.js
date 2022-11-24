@@ -6,7 +6,7 @@ if (args) {
 }
 
 const riskDieColor = "#bf0000";
-const baseDieColor = "#000000";
+const humanDieColor = "#000000";
 const title = dialogTitle(move);
 const content = dialogContent(move);
 const wordRisk =`<span style="color: ${riskDieColor}">Insight</span>`;
@@ -36,16 +36,16 @@ function dialogContent(moveNumber) {
                 </p>
                 <form class="flexcol">
                     <div class="form-group">
-                        <input type="checkbox" id="baseDie" name="baseDie" checked>
-                        <label for="baseDie">Always start with <b>1d6</b></label>
+                        <input type="checkbox" id="humanDie" name="humanDie">
+                        <label for="humanDie">One die if what you’re doing is within human capabilities.</label>
                     </div>
                     <div class="form-group">
-                        <input type="checkbox" id="expertiseDie" name="expertiseDie">
-                        <label for="expertiseDie">Add another 1d6 if your <b>Expertise</b> is relevant</label>
+                        <input type="checkbox" id="occupationalDie" name="occupationalDie">
+                        <label for="occupationalDie">One die if it’s within your occupational expertise.</label>
                     </div>
                     <div class="form-group">
-                        <input type="checkbox" id="stressDie" name="stressDie">
-                        <label for="stressDie">Add your <b><span style="color: ${riskDieColor}">Stress Die</span></b> if you are willing to take that risk</label>
+                        <input type="checkbox" id="insightDie" name="insightDie">
+                        <label for="insightDie" style="color:#bf0000;">If you will risk your mind to succeed.</label>
                     </div>
                 </form>
                 </br>
@@ -161,7 +161,7 @@ async function asyncDialog({
                             let hdRoll = await new Roll('1d6').evaluate({ async: true });
                             dice.push({
                                 name: "Human Die",
-                                dieColor: baseDieColor,
+                                dieColor: humanDieColor,
                                 isRisk: false,
                                 rollVal: hdRoll.result
                             });
@@ -171,7 +171,7 @@ async function asyncDialog({
                             let odRoll = await new Roll('1d6').evaluate({ async: true });
                             dice.push({
                                 name: "Occupational Die",
-                                dieColor: baseDieColor,
+                                dieColor: humanDieColor,
                                 isRisk: false,
                                 rollVal: odRoll.result
                             });
@@ -201,7 +201,7 @@ async function asyncDialog({
                         dice.forEach(die => {
                             diceOutput = diceOutput.concat(getDiceForOutput(die.rollVal, die.dieColor), " ");
                         });
-                        const chatContentMessage = chatContent(move, diceOutput, maxDie.rollVal, stressMessage);
+                        const chatContentMessage = chatContent(move, diceOutput, maxDie.rollVal, riskMessage);
 
                         ChatMessage.create({
                             content: chatContentMessage
