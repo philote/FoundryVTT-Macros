@@ -5,11 +5,13 @@ if (args) {
     }
 }
 
+const anchorColor = "#2624a6";
 const heatColor = "#eb7602";
 const riskDieColor = "#A62424";
 const baseDieColor = "#000000";
 const wordStress =`<span style="color: ${riskDieColor}">Stress</span>`;
 const wordHeat =`<span style="color: ${heatColor}">HEAT</span>`;
+const wordAnchor =`<span style="color: ${anchorColor}">Anchor</span>`;
 
 function dialogTitle(moveNumber) {
     switch (moveNumber) {
@@ -36,22 +38,20 @@ function getMaxDieMessage(moveNumber, maxDieNumber) {
                 case "1":
                 case "2":
                 case "3":
-                    return `Your inadequacy is clear, they pity you. You can’t use your Expertise until Stress goes up.`;
+                    return `Your inadequacy is clear, they pity you. You can’t use your Expertise until ${wordStress} goes up.`;
                 case "4":
                 case "5":
                     return `
-                    <ul>
-                        <li>If they are an Operator, agree with them why and they take it so badly & THEY roll for Stress.</li>
-                        <li>If they are an NPC, mark HEAT and agree how this draws the Conspiracy’s attention.</li>
-                    </ul>
+                    <b>If they are an Operator</b>, agree with them why and they take it so badly & <b><i>THEY roll for ${wordStress}</i></b>.
+                    </br>
+                    <b>If they are an NPC, <i>mark ${wordHeat}</i></b> and agree how this draws the Conspiracy’s attention.
                     `;
                 case "6":
                     return `
-                    <ul>
-                        <li>If they are an Operator, agree with them why and they take it so badly & THEY roll for Stress.</li>
-                        <li>If they are an NPC, mark HEAT and agree how this draws the Conspiracy’s attention.</li>
-                    </ul>
-                    It was really worth it: reduce Stress by an extra 1.
+                    <b>If they are an Operator</b>, agree with them why and they take it so badly & <b><i>THEY roll for ${wordStress}</i></b>.
+                    </br>
+                    <b>If they are an NPC, <i>mark ${wordHeat}</i></b> and agree how this draws the Conspiracy’s attention.
+                    </br></br>It was really worth it: reduce ${wordStress} by an extra 1.
                     `;
                 default:
                     return `<span style="color:#ff0000">ERROR(getMaxDieMessage.1)</span>`;
@@ -62,14 +62,14 @@ function getMaxDieMessage(moveNumber, maxDieNumber) {
                 case "1":
                 case "2":
                 case "3":
-                    return `You’re ashamed of yourself & distracted. You can’t use your Expertise until Stress goes up.`;
+                    return `You’re ashamed of yourself & distracted. You can’t use your Expertise until ${wordStress} goes up.`;
                 case "4":
                 case "5":
-                    return `Mark HEATand agree how this draws the Conspiracy’s attention.`;
+                    return `<b><i>Mark ${wordHeat}</i></b> and agree how this draws the Conspiracy’s attention.`;
                 case "6":
                     return `
-                        Mark HEATand agree how this draws the Conspiracy’s attention.
-                        </br>It was really worth it: reduce Stress by an extra 1.
+                        <b><i>Mark ${wordHeat}</i></b> and agree how this draws the Conspiracy’s attention.
+                        </br></br>It was really worth it: reduce ${wordStress} by an extra 1.
                     `;
                 default:
                     return `<span style="color:#ff0000">ERROR(getMaxDieMessage.2)</span>`;
@@ -79,14 +79,14 @@ function getMaxDieMessage(moveNumber, maxDieNumber) {
                 case "1":
                 case "2":
                 case "3":
-                    return `They see through your false contrition. You can’t use your Expertise until Stress goes up.`;
+                    return `They see through your false contrition. You can’t use your Expertise until ${wordStress} goes up.`;
                 case "4":
                 case "5":
-                    return `Mark HEATand describe what they ask you to do to restore their belief in you and how this draws the attention of the Conspiracy to the team or makes things difficult for you. You cannot go back to them for support until you fulfil the obligation they have placed on you.`;
+                    return `<b><i>Mark ${wordHeat}</i></b> and describe what they ask you to do to restore their belief in you and how this draws the attention of the Conspiracy to the team or makes things difficult for you. You cannot go back to them for support until you fulfil the obligation they have placed on you.`;
                 case "6":
                     return `
-                        Mark HEATand describe what they ask you to do to restore their belief in you and how this draws the attention of the Conspiracy to the team or makes things difficult for you. You cannot go back to them for support until you fulfil the obligation they have placed on you.
-                        </br>It was really worth it: reduce Stress by an extra 1.
+                        <b><i>Mark ${wordHeat}</i></b> and describe what they ask you to do to restore their belief in you and how this draws the attention of the Conspiracy to the team or makes things difficult for you. You cannot go back to them for support until you fulfil the obligation they have placed on you.
+                        </br></br>It was really worth it: reduce ${wordStress} by an extra 1.
                     `;
                 default:
                     return `<span style="color:#ff0000">ERROR(getMaxDieMessage.3)</span>`;
@@ -98,11 +98,11 @@ function getMaxDieMessage(moveNumber, maxDieNumber) {
                 case "3":
                 case "4":
                 case "5":
-                    return `Mark your Anchor, placing them on the Conspiracy Target list, or Missing if they are already a Target. Only Control can mark Taken.`;
+                    return `<b><i>Mark your ${wordAnchor}</i></b>, placing them on the Conspiracy Target list, or Missing if they are already a Target. Only Control can mark Taken.`;
                 case "6":
                     return `
-                        Mark your Anchor, placing them on the Conspiracy Target list, or Missing if they are already a Target. Only Control can mark Taken.    
-                        </br>It was really worth it: reduce Stress by an extra 1.
+                        <b><i>Mark your ${wordAnchor}</i></b>, placing them on the Conspiracy Target list, or Missing if they are already a Target. Only Control can mark Taken.    
+                        </br></br>It was really worth it: reduce ${wordStress} by an extra 1.
                     `;
                 default:
                     return `<span style="color:#ff0000">ERROR(getMaxDieMessage.4)</span>`;
@@ -113,22 +113,22 @@ function getMaxDieMessage(moveNumber, maxDieNumber) {
                 case "2":
                 case "3":
                     return `
-                        EITHER say why you feel bad about the event and you can’t use your Expertise until Stress goes up; 
-                        </br>OR add something about your Anchor to your recollection or its aftermath and mark them.
+                        <b>EITHER</b> say why you feel bad about the event and you can’t use your Expertise until ${wordStress} goes up; 
+                        </br><b>OR</b> add something about your ${wordAnchor} to your recollection or its aftermath and <b><i>mark them</b></i>.
                     `;
                 case "4":
                 case "5":
                     return `
                         The other Operator describes a different version or view of the same event. 
-                        </br>They EITHER say why they are hurt by it and they roll for Stress; 
-                        </br>OR they choose to add something about their Anchor to their recollection or its aftermath and theymark theirAnchor.
+                        </br>They <b>EITHER</b> say why they are hurt by it and they <b><i>roll for ${wordStress}</b></i>; 
+                        </br><b>OR</b> they choose to add something about their ${wordAnchor} to their recollection or its aftermath and <b><i>they mark their ${wordAnchor}</b></i>.
                     `;
                 case "6":
                     return `
                         The other Operator describes a different version or view of the same event. 
-                        </br>They EITHER say why they are hurt by it and they roll for Stress; 
-                        </br>OR they choose to add something about their Anchor to their recollection or its aftermath and theymark theirAnchor.
-                        </br>It was really worth it; reduce Stress by an extra 1.
+                        </br>They <b>EITHER</b> say why they are hurt by it and they <b><i>roll for ${wordStress}</b></i>; 
+                        </br><b>OR</b> they choose to add something about their ${wordAnchor} to their recollection or its aftermath and <b><i>they mark their ${wordAnchor}</b></i>.
+                        </br></br>It was really worth it; reduce ${wordStress} by an extra 1.
                     `;
                 default:
                     return `<span style="color:#ff0000">ERROR(getMaxDieMessage.5)</span>`;
