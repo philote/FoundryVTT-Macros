@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Quantico:wght@700&display=swap');
+
+.custom-system-actor {
+    background-color: #26231D;
+}
+
+.custom-system-sheet-actions {
+    margin-bottom: 0px;
+}
+
+.grid,
+.grid-2col {
+    margin: 5px 0;
+}
+
+.custom-system-field-root {
+    margin-left: 0px;
+}
+
+/* .custom-system-field {
+    display: inline-flex;
+    align-items: center;
+    width: fill-available;
+    width: -webkit-fill-available;
+    width: -moz-available;
+    position: relative;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+} */
+
+.custom-system-label-root {
+    width: fill-available;
+    width: -webkit-fill-available;
+    width: -moz-available;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+form .form-group, form .form-group-stacked {
+    align-items: normal;
+}
+
+.css_table_top table {
+    margin: 0px;
+    border-top: 0px;
+    border-bottom: 0px;
+}
+
+/* Dark Color Scheme for text */
+.window-app .window-content {
+    color: var(--color-text-light-primary);
+    background: none;
+    background-color: #26231D;
+    /* background-color: #36403F; */
+}
+
+.dialog .dialog-buttons button {
+    background: #8C1C1C;
+    color: var(--color-text-light-primary);
+}
+
+input[type="text"], input[type="number"], input[type="password"], input[type="date"], input[type="time"], input[type="search"] {
+    color: var(--color-text-light-primary);
+    background: rgba(256, 256, 256, 0.05);
+}
+
+select {
+    color: var(--color-text-light-primary);
+    background: rgba(256, 256, 256, 0.05);
+}
+
+.tabs .item.active {
+    text-shadow: 0 0 10px var(--color-shadow-primary);
+    color: #F29829;
+}
+
+option, optgroup {
+    background: #36403F;
+}
+
+.select-selected {
+    background-color: #8C1C1C;
+}
+
+textarea {
+    color: var(--color-text-light-primary);
+    background: rgba(256, 256, 256, 0.05);
+}
+
+a.content-link,
+a.inline-roll {
+    background: #653D1B;
+}
+
+form button {
+    color: var(--color-text-light-primary);
+    background: rgba(256, 256, 256, 0.1);
+}
+
+form .notes,
+form .hint {
+    color: var(--color-text-light-secondary);
+}
+
+#keybindings .binding .key.uneditable {
+    background: #26231D;
+}
+
+.directory .directory-header .header-search input {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#chat-controls .roll-type-select {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#chat-form textarea {
+    background: rgba(0, 0, 0, 0.5);
+    background-color: #5969676b;
+}
+
+#module-management .package-list .package-title, #module-management .package-list .package-metadata, #module-management .package-list .package-description {
+    color: var(--color-text-light-primary);
+}
+
+/* Moves*/
+.css_move_panel {
+    margin: 5px;
+    padding: 5px;
+    background-color: #36403fcf;
+    border: 1.5px solid #A6652D;
+    border-radius: 10px;
+    background-origin: padding-box;
+}
+
+.css_move_subheader {
+    color: #a6652dbe;
+    text-shadow: 2px 2px #26231D;
+    font-size: 20px;
+    margin-bottom: 5px;
+    font-family: 'Quantico', sans-serif;
+    line-height: 1;
+    display: grid;
+}
+
+.css_move_text {
+    display: grid;
+}
+
+.css_move_roll {
+    background: #dedede;
+    max-width: fit-content;
+    padding: 4px 8px;
+border: 1.5px solid var(--color-border-dark-1);
+    border-radius: 10px;
+    white-space: nowrap;
+    word-break: break-all;
+    cursor: pointer;
+}
+/* ---- */
+
+.css_header_stress {
+    color: var(--color-text-light-primary);
+    text-shadow: 2px 2px #26231D;
+	font-size: 20px;
+    font-family: 'Black Ops One', cursive;
+	line-height: 1.5;
+}
+
+.css_header {
+    color: #A6652D;
+    text-shadow: 2px 2px #26231D;
+	font-size: 20px;
+    font-family: 'Black Ops One', cursive;
+	line-height: 1.5;
+}
+
+.css_subheader {
+    color: #a6652dbe;
+    text-shadow: 2px 2px #26231D;
+	font-size: 20px;
+    font-family: 'Quantico', sans-serif;
+	line-height: 1;
+}
+
+.css_label {
+    margin: 0px 0px 5px 0px;
+}
+
+.css_checkbox {
+    margin: 1px;
+    padding: 0px;
+}
+
+/* custom */
+.css_Panel_Top {
+	margin: 0px;
+	padding: 0px;
+	border: 1px solid var(--color-border-light-2);
+    background-color: #5969676b;
+    border-radius: 5px;
+}
+
+.css_Panel_Top_Inside_intel {
+	margin: 5px;
+	padding: 5px;
+	background-color: #36403F;
+	border: 1.5px solid #A6652D;
+    border-radius: 10px;
+	background-origin: padding-box;
+}
+
+.css_Panel_Top_Inside_stress {
+	margin: 5px;
+	padding: 5px;
+	background-color: #8c1c1c7c;
+	border: 1.5px solid var(--color-border-dark-1);
+    border-radius: 10px;
+	background-origin: padding-box;
+}
+
+.css_Panel_Top_Inside_callout {
+    margin: 5px;
+    padding: 5px;
+    background-color: #8c1c1c7c;
+    border: 1.5px solid var(--color-border-dark-1);
+    border-radius: 10px;
+    background-origin: padding-box;
+}
+
+.css_Panel_bottom {
+	margin: 5px;
+	padding: 10px 5px;
+	background-color: #36403F;
+	border: 1.5px solid var(--color-border-dark-1);
+    border-radius: 10px;
+	background-origin: padding-box;
+}
+
+.css_Tabbed_Panel {
+	margin: 0px;
+	padding: 0px;
+    background-color: #36403f5f;
+	background-origin: padding-box;
+}
+
+.css_table_top2 table {
+    margin: 0px;
+    padding: 0px;
+    height: fit-content;
+    border-top: 0px;
+    border-bottom: 0px;
+    background: none;
+}
+
+.css_table_top2 td {
+    margin: 0px;
+    padding: 0px;
+}
+
+.css_table_top2 table tr:nth-child(even) {
+    height: 57px;
+    background-color: transparent;
+}
+
+.sheet header.sheet-header h1 input {
+    height: 38px;
+    line-height: 38px;
+    margin: 5px 1%;
+    width: 98%;
+}
+
+.grid, .grid-2col {
+    gap: 5px;
+}

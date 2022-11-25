@@ -18,15 +18,15 @@ const content = `
             <label for="stressDie">Add your <b><span style="color: ${riskDieColor}">Stress Die</span></b> if you are willing to take that risk</label>
         </div>
         <hr>
-        <div class="form-group">
+        <div>
             <input type="radio" id="namelessPawn" name="rollBonus" value="3">
             <label for="namelessPawn">+3 if they are nameless pawns</label>
         </div>
-        <div class="form-group">
+        <div>
             <input type="radio" id="namelessPawnLeader" name="rollBonus" value="2">
             <label for="namelessPawnLeader">+2 if they are the leader of nameless pawns</label>
         </div>
-        <div class="form-group">
+        <div>
             <input type="radio" id="supernatural" name="rollBonus" value="-1">
             <label for="supernatural">-1 if they are a Supernatural</label>
         </div>
