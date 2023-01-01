@@ -60,6 +60,10 @@ form .form-group, form .form-group-stacked {
     /* background-color: #36403F; */
 }
 
+.sheet.journal-entry .journal-entry-content {
+  background: #000000BF;
+}
+
 .dialog .dialog-buttons button {
     background: #8C1C1C;
     color: var(--color-text-light-primary);
