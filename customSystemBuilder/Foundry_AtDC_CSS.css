@@ -56,8 +56,7 @@ form .form-group, form .form-group-stacked {
 .window-app .window-content {
     color: var(--color-text-light-primary);
     background: none;
-    background-color: #26231D;
-    /* background-color: #36403F; */
+    background-color: #637573;
 }
 
 .sheet.journal-entry .journal-entry-content {
@@ -131,10 +130,6 @@ form .hint {
 
 #module-management .package-list .package-title, #module-management .package-list .package-metadata, #module-management .package-list .package-description {
     color: var(--color-text-light-primary);
-}
-
-.mce-content-body {
-  color: var(--color-text-light-primary);
 }
 
 #vtta-tokenizer div.view-layer-control {
