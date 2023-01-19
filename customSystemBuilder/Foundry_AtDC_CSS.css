@@ -133,6 +133,34 @@ form .hint {
     color: var(--color-text-light-primary);
 }
 
+.mce-content-body {
+  color: var(--color-text-light-primary);
+}
+
+#vtta-tokenizer div.view-layer-control {
+  background-color: #5969676b;
+}
+
+#vtta-tokenizer div.view-layer-control .section, #vtta-tokenizer .section {
+  background-color: #36403fcf;
+}
+
+#vtta-tokenizer div.menu {
+  background-color: #5969676b;
+}
+
+#vtta-tokenizer div.section {
+  background-color: #36403fcf;
+}
+
+/* button:disabled {
+  color: var(--color-text-light-primary);
+}
+
+form button {
+  color: var(--color-text-dark-secondary);
+} */
+
 /* Moves*/
 .css_move_panel {
     margin: 5px;
