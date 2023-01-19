@@ -56,7 +56,7 @@ form .form-group, form .form-group-stacked {
 .window-app .window-content {
     color: var(--color-text-light-primary);
     background: none;
-    background-color: #637573;
+    background-color: #525b5a;
 }
 
 .sheet.journal-entry .journal-entry-content {
