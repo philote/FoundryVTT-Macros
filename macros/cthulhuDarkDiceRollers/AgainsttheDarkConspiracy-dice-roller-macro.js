@@ -185,8 +185,12 @@ async function asyncDialog({
                         dice.forEach(die => {
                             diceOutput = diceOutput.concat(getDiceForOutput(die.rollVal, die.dieColor), " ");
                         });
+                        const user = game.user.id;
+                        const speaker = ChatMessage.getSpeaker({ actor, token });
 
                         ChatMessage.create({
+                            user: user,
+                            speaker: speaker,
                             content: `
                                 <div class='flexcol' style="font-size: 1.5em;">Roll Results:</div>
                                 <p>

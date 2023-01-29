@@ -549,8 +549,12 @@ async function asyncDialog({
                             diceOutput = diceOutput.concat(getDiceForOutput(die.rollVal, die.dieColor), " ");
                         });
                         const chatContentMessage = chatContent(move, diceOutput, maxDie.rollVal, stressMessage);
+                        const user = game.user.id;
+                        const speaker = ChatMessage.getSpeaker({ actor, token });
 
                         ChatMessage.create({
+                            user: user,
+                            speaker: speaker,
                             content: chatContentMessage
                         });
 

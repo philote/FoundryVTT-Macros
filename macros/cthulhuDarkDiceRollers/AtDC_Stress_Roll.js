@@ -80,6 +80,11 @@ dice.forEach(die => {
 });
 const chatContentMessage = chatContent(diceOutput, stressMessage, stressValMessage);
 
+const user = game.user.id;
+const speaker = ChatMessage.getSpeaker({ actor, token });
+
 ChatMessage.create({
+    user: user,
+    speaker: speaker,
     content: chatContentMessage
 });

@@ -169,6 +169,11 @@ function getDiceForOutput(dieNumber, colorHex) {
 const roll = await new Roll('1d6').evaluate({ async: true });
 const diceOutput = getDiceForOutput(roll.result, baseDieColor);
 const chatContentMessage = chatContent(move, diceOutput, roll.result);
+const user = game.user.id;
+const speaker = ChatMessage.getSpeaker({ actor, token });
+
 ChatMessage.create({
+    user: user,
+    speaker: speaker,
     content: chatContentMessage
 });
