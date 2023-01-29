@@ -1,6 +1,6 @@
 let move = 0;
 if (args) {
-    if(args[0]) {
+    if (args[0]) {
         move = args[0];
     }
 }
@@ -9,7 +9,7 @@ const riskDieColor = "#bf0000";
 const humanDieColor = "#000000";
 const title = dialogTitle(move);
 const content = dialogContent(move);
-const wordRisk =`<span style="color: ${riskDieColor}">Insight</span>`;
+const wordRisk = `<span style="color: ${riskDieColor}">Insight</span>`;
 const riskMoveMessage = `
     <hr>
     <div style="font-size: 18px"><b>
@@ -21,6 +21,10 @@ function dialogTitle(moveNumber) {
     switch (moveNumber) {
         case 1:
             return `Investigate`;
+        case 3:
+            return `Compete`
+        case 4:
+            return `Cooperate`
         case 2:
         default:
             return `Do Something Else`;
@@ -33,6 +37,48 @@ function dialogContent(moveNumber) {
             return `
                 <p>
                     <b>When you want to ask a question about someone, something or somewhere, or want Control to reveal something about the situation</b>, roll:
+                </p>
+                <form class="flexcol">
+                    <div class="form-group">
+                        <input type="checkbox" id="humanDie" name="humanDie">
+                        <label for="humanDie">One die if what you’re doing is within human capabilities.</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" id="occupationalDie" name="occupationalDie">
+                        <label for="occupationalDie">One die if it’s within your occupational expertise.</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" id="insightDie" name="insightDie">
+                        <label for="insightDie" style="color:#bf0000;">If you will risk your mind to succeed.</label>
+                    </div>
+                </form>
+                </br>
+            `;
+        case 3: // Compete
+            return `
+                <p>
+                    <b>When you are competing with another player, everyone who is competing rolls their dice. The highest die wins:
+                </p>
+                <form class="flexcol">
+                    <div class="form-group">
+                        <input type="checkbox" id="humanDie" name="humanDie">
+                        <label for="humanDie">One die if what you’re doing is within human capabilities.</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" id="occupationalDie" name="occupationalDie">
+                        <label for="occupationalDie">One die if it’s within your occupational expertise.</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" id="insightDie" name="insightDie">
+                        <label for="insightDie" style="color:#bf0000;">If you will risk your mind to succeed.</label>
+                    </div>
+                </form>
+                </br>
+            `;
+        case 4: // Cooperate
+            return `
+                <p>
+                    <b>When you are cooperating with another player, everyone who is cooperating rolls their dice. Take the highest die, rolled by anyone, as the result:
                 </p>
                 <form class="flexcol">
                     <div class="form-group">
@@ -78,22 +124,28 @@ function dialogContent(moveNumber) {
 function getMaxDieMessage(moveNumber, maxDieNumber) {
     // console.log(`moveNumber: ${moveNumber}, maxDieNumber: ${maxDieNumber}`)
     switch (moveNumber) {
-        case 1: { // Investigate
-            switch (maxDieNumber) {
-                case "1":
-                case "2":
-                case "3":
-                    return `You get the bare minimum: if you need information to proceed, you get it, but that’s all.`;
-                case "4":
-                    return `You get everything a competent investigator would discover.`;
-                case "5":
-                    return `You discover everything a competent investigator would discover, plus something more. For example, you might also remember a related folktale, rumour or scientific experiment.`;
-                case "6":
-                    return `You discover all of that, plus, in some way, you glimpse beyond human knowledge. This probably means you see something horrific and make an <b><i>${wordRisk} Roll</i></b>.`;
-                default:
-                    return `<span style="color:#ff0000">ERROR(getMaxDieMessage.1)</span>`;
+        case 1: // Investigate
+            {
+                switch (maxDieNumber) {
+                    case "1":
+                    case "2":
+                    case "3":
+                        return `You get the bare minimum: if you need information to proceed, you get it, but that’s all.`;
+                    case "4":
+                        return `You get everything a competent investigator would discover.`;
+                    case "5":
+                        return `You discover everything a competent investigator would discover, plus something more. For example, you might also remember a related folktale, rumour or scientific experiment.`;
+                    case "6":
+                        return `You discover all of that, plus, in some way, you glimpse beyond human knowledge. This probably means you see something horrific and make an <b><i>${wordRisk} Roll</i></b>.`;
+                    default:
+                        return `<span style="color:#ff0000">ERROR(getMaxDieMessage.1)</span>`;
+                }
             }
-        }
+        case 3:
+        case 4:
+            { // Compete & Cooperate
+                return `your highest roll was ${maxDieNumber}`;
+            }
         case 2: // Do Something Else
         default:
             switch (maxDieNumber) {
@@ -188,10 +240,10 @@ async function asyncDialog({
                         };
 
                         let diceOutput = ""
-                        
+
                         // TODO add the risk die logic and change it wher risk has to be higher than all other die
                         const maxDie = dice.reduce((a, b) => (a.rollVal > b.rollVal) ? a : b);
-                        
+
                         let riskMessage = "";
                         if (maxDie.isRisk) {
                             riskMessage = riskMoveMessage;
