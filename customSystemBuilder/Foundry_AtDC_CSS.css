@@ -184,7 +184,7 @@ form button {
     background: #dedede;
     max-width: fit-content;
     padding: 4px 8px;
-border: 1.5px solid var(--color-border-dark-1);
+    border: 1.5px solid var(--color-border-dark-1);
     border-radius: 10px;
     white-space: nowrap;
     word-break: break-all;
@@ -198,6 +198,10 @@ border: 1.5px solid var(--color-border-dark-1);
 	font-size: 20px;
     font-family: 'Black Ops One', cursive;
 	line-height: 1.5;
+}
+
+.css_header_stress > .custom-system-rollable {
+    color: var(--color-text-light-primary);
 }
 
 .css_header {

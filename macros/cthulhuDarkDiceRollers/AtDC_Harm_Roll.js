@@ -3,7 +3,7 @@ const riskDieColor = "#A62424";
 const baseDieColor = "#000000";
 const wordIntel =`<span style="color: ${intelColor}">INTEL</span>`;
 const wordStress =`<span style="color: ${riskDieColor}">Stress</span>`;
-const title = "Harmful Consequences";
+const title = "Stress Roll";
 const content = `
     <p>
         <b>If any Risk Die rolls equal to or greater than your highest roll</b>, you suffer a Harmful Consequence:
@@ -48,12 +48,12 @@ function getMaxDieMessage(maxDieNumber) {
         case 3:
             return `
                 The consequences are serious, say if:
-                <u>
+                <ul>
                     <li>It’s mortal. You<b><i>fill your ${wordStress} track</i></b> and crack.</li>
                     <li>It’s bloody. You’ll <b><i>die after one more action</i></b> without medical treatment.</li>
                     <li>It’s painful. You <b><i>cannot use your Expertise</i></b> until you get medical treatment.</li>
                 </ul>
-                Medical treatment requires an Operator, who could be the one needing treatment, to mark a gear slot and declare a ‘Medical Kit’. They then spend an action treating the wound which uses up the kit.
+                Medical treatment requires an Operator, who could be the one needing treatment, to mark a gear slot and declare a "Medical Kit".
             `;
         case 4:
         case 5:
@@ -75,7 +75,7 @@ function chatContent(diceOutput, maxDieNumber, stressMessage, bonusValue) {
         <b>Antagonist Modifier:</b> ${bonusValue}
         </br><b>Final Result:</b> ${maxDieNumber}
         <hr>
-        <p>${getMaxDieMessage(maxDieNumber)}</p>
+        ${getMaxDieMessage(maxDieNumber)}
         ${stressMessage}
     `;
 }
