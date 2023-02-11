@@ -449,7 +449,8 @@
                                                             "cssClass": "css_header_stress",
                                                             "role": "0",
                                                             "permission": "0",
-                                                            "tooltip": "When you see something disturbing, or the GM says you do, roll 1d6 for Stress. If you roll higher than your current Stress, increase Stress by one. When you include your Stress die with ANY die pool, and it rolled equal to or greater than the highest roll, increase Stress by one. Whenever your Stress increases, say how the increased Stress manifests. When Stress reaches 6, you choose to either describe what happens as you crack and become an NPC under the sway of the Conspiracy, or describe how you die, perhaps heroically. Either way … start a new character.",
+                                                            "tooltip": "When you see something disturbing, or the GM says you do, roll for Stress. :: Whenever your Stress increases, say how the increased Stress manifests. :: When Stress reaches 6, you choose to either describe what happens as you crack and become an NPC under the sway of the Conspiracy, or describe how you die, perhaps heroically. Either way … start a new character.",
+                                                            "visibilityFormula": "",
                                                             "label": null,
                                                             "defaultValue": null,
                                                             "size": "full-size",
@@ -624,7 +625,8 @@
                                                         "cssClass": "",
                                                         "role": "0",
                                                         "permission": "0",
-                                                        "tooltip": "",
+                                                        "tooltip": "Inconspicuous :: Limited to (■)",
+                                                        "visibilityFormula": "",
                                                         "label": null,
                                                         "defaultValue": null,
                                                         "size": "full-size",
@@ -642,7 +644,8 @@
                                                         "cssClass": "",
                                                         "role": "0",
                                                         "permission": "0",
-                                                        "tooltip": "",
+                                                        "tooltip": "Inconspicuous :: Limited to (■)",
+                                                        "visibilityFormula": "",
                                                         "label": "",
                                                         "defaultValue": null,
                                                         "size": "x-small",
@@ -665,7 +668,8 @@
                                                         "cssClass": "",
                                                         "role": "0",
                                                         "permission": "0",
-                                                        "tooltip": "",
+                                                        "tooltip": "Looks ‘suspiciously burdened’ :: Limited to gear rated (■) or (■■) :: risks more frequent challenges to maintain their cover",
+                                                        "visibilityFormula": "",
                                                         "label": null,
                                                         "defaultValue": null,
                                                         "size": "full-size",
@@ -683,7 +687,8 @@
                                                         "cssClass": "",
                                                         "role": "0",
                                                         "permission": "0",
-                                                        "tooltip": "",
+                                                        "tooltip": "Looks ‘suspiciously burdened’ :: Limited to gear rated (■) or (■■) :: risks more frequent challenges to maintain their cover",
+                                                        "visibilityFormula": "",
                                                         "label": "",
                                                         "defaultValue": null,
                                                         "size": "x-small",
@@ -706,7 +711,8 @@
                                                         "cssClass": "",
                                                         "role": "0",
                                                         "permission": "0",
-                                                        "tooltip": "",
+                                                        "tooltip": "Looks like they are professionals on a mission :: Can declare any gear: (■), (■■), (■■■), or (■■■■) :: Can't use Expertise to \"maintain their cover\" or [flee for their life and chase them down], on foot",
+                                                        "visibilityFormula": "",
                                                         "label": null,
                                                         "defaultValue": null,
                                                         "size": "full-size",
@@ -724,7 +730,8 @@
                                                         "cssClass": "",
                                                         "role": "0",
                                                         "permission": "0",
-                                                        "tooltip": "",
+                                                        "tooltip": "Looks like they are professionals on a mission :: Can declare any gear: (■), (■■), (■■■), or (■■■■) :: Can't use Expertise to \"maintain their cover\" or [flee for their life and chase them down], on foot",
+                                                        "visibilityFormula": "",
                                                         "label": "",
                                                         "defaultValue": null,
                                                         "size": "x-small",
@@ -915,41 +922,45 @@
                                                             "role": "0",
                                                             "permission": "0",
                                                             "tooltip": "",
+                                                            "visibilityFormula": null,
                                                             "contents": [
                                                                 {
                                                                     "key": "",
-                                                                    "cssClass": "css_header",
-                                                                    "role": "0",
-                                                                    "permission": "0",
-                                                                    "tooltip": "Some Expertise will require you to have a particular piece of equipment.  Just because you have expertise in Digital Intrusion doesn't mean you can work without a laptop/tablet ...",
-                                                                    "label": null,
-                                                                    "defaultValue": null,
-                                                                    "size": "full-size",
-                                                                    "icon": "",
-                                                                    "value": "Areas of Expertise",
-                                                                    "prefix": "",
-                                                                    "suffix": "",
-                                                                    "rollMessage": "",
-                                                                    "altRollMessage": "",
-                                                                    "style": "label",
-                                                                    "type": "label"
-                                                                },
-                                                                {
-                                                                    "key": "",
-                                                                    "cssClass": "css_Panel_Top_Inside_callout",
+                                                                    "cssClass": "",
                                                                     "role": "0",
                                                                     "permission": "0",
                                                                     "tooltip": "",
+                                                                    "visibilityFormula": "",
                                                                     "contents": [
+                                                                        {
+                                                                            "key": "",
+                                                                            "cssClass": "css_header",
+                                                                            "role": "0",
+                                                                            "permission": "0",
+                                                                            "tooltip": "Some Expertise will require you to have a particular piece of equipment.  Just because you have expertise in Digital Intrusion doesn't mean you can work without a laptop/tablet ...",
+                                                                            "visibilityFormula": null,
+                                                                            "label": null,
+                                                                            "defaultValue": null,
+                                                                            "size": "full-size",
+                                                                            "icon": "",
+                                                                            "value": "Areas of Expertise",
+                                                                            "prefix": "",
+                                                                            "suffix": "",
+                                                                            "rollMessage": "",
+                                                                            "altRollMessage": "",
+                                                                            "style": "label",
+                                                                            "type": "label"
+                                                                        },
                                                                         {
                                                                             "key": "expertise_dd_available1",
                                                                             "cssClass": "",
                                                                             "role": "0",
                                                                             "permission": "0",
                                                                             "tooltip": "",
+                                                                            "visibilityFormula": "",
                                                                             "label": "",
                                                                             "defaultValue": "1",
-                                                                            "size": "full-size",
+                                                                            "size": "m-small",
                                                                             "options": [
                                                                                 {
                                                                                     "key": "1",
@@ -964,6 +975,38 @@
                                                                             "tableKeyColumn": null,
                                                                             "tableLabelColumn": null,
                                                                             "type": "select"
+                                                                        }
+                                                                    ],
+                                                                    "flow": "horizontal",
+                                                                    "align": "center",
+                                                                    "type": "panel"
+                                                                },
+                                                                {
+                                                                    "key": "",
+                                                                    "cssClass": "css_Panel_Top_Inside_callout",
+                                                                    "role": "0",
+                                                                    "permission": "0",
+                                                                    "tooltip": "",
+                                                                    "visibilityFormula": "",
+                                                                    "contents": [
+                                                                        {
+                                                                            "key": "",
+                                                                            "cssClass": "",
+                                                                            "role": "0",
+                                                                            "permission": "0",
+                                                                            "tooltip": "",
+                                                                            "visibilityFormula": "",
+                                                                            "label": null,
+                                                                            "defaultValue": null,
+                                                                            "size": "full-size",
+                                                                            "icon": "",
+                                                                            "value": "<b>Specialization: </b>${past_dd_spec}$",
+                                                                            "prefix": "",
+                                                                            "suffix": "",
+                                                                            "rollMessage": "",
+                                                                            "altRollMessage": "",
+                                                                            "style": "label",
+                                                                            "type": "label"
                                                                         },
                                                                         {
                                                                             "key": "spec",
@@ -971,14 +1014,15 @@
                                                                             "role": "0",
                                                                             "permission": "0",
                                                                             "tooltip": "Once per Cycle of Play mark Stress to use your specialism to improve the outcome of a dice roll by one step so long as the action made use of that specific Expertise and the GM agrees.",
-                                                                            "label": "Specialization",
+                                                                            "visibilityFormula": "",
+                                                                            "label": "",
                                                                             "defaultValue": null,
-                                                                            "size": "full-size",
+                                                                            "size": "small",
                                                                             "type": "checkbox"
                                                                         }
                                                                     ],
                                                                     "flow": "horizontal",
-                                                                    "align": "center",
+                                                                    "align": "left",
                                                                     "type": "panel"
                                                                 }
                                                             ],
@@ -2769,40 +2813,41 @@
                                                                     "role": "0",
                                                                     "permission": "0",
                                                                     "tooltip": "",
+                                                                    "visibilityFormula": "",
                                                                     "label": "",
                                                                     "defaultValue": "",
                                                                     "size": "full-size",
                                                                     "options": [
                                                                         {
-                                                                            "key": "made sense of it all",
+                                                                            "key": "Analyst",
                                                                             "value": "Analyst"
                                                                         },
                                                                         {
-                                                                            "key": "killed people",
+                                                                            "key": "Assassin",
                                                                             "value": "Assassin"
                                                                         },
                                                                         {
-                                                                            "key": "broke into places",
+                                                                            "key": "Burglar",
                                                                             "value": "Burglar"
                                                                         },
                                                                         {
-                                                                            "key": "You know vehicles & drove … anything",
+                                                                            "key": "Driver",
                                                                             "value": "Driver"
                                                                         },
                                                                         {
-                                                                            "key": "pretended to be other people",
+                                                                            "key": "False-face",
                                                                             "value": "False-face"
                                                                         },
                                                                         {
-                                                                            "key": "cracked systems",
+                                                                            "key": "Hacker",
                                                                             "value": "Hacker"
                                                                         },
                                                                         {
-                                                                            "key": "manipulated people",
+                                                                            "key": "Handler",
                                                                             "value": "Handler"
                                                                         },
                                                                         {
-                                                                            "key": "built (often dangerous) things",
+                                                                            "key": "Sparks",
                                                                             "value": "Sparks"
                                                                         }
                                                                     ],
@@ -4840,7 +4885,7 @@
                 },
                 "display": {
                     "width": "400",
-                    "height": "400",
+                    "height": "300",
                     "fix_size": false,
                     "pp_width": "64",
                     "pp_height": "64"
