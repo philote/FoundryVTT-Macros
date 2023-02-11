@@ -3,7 +3,7 @@ const riskDieColor = "#A62424";
 const baseDieColor = "#000000";
 const wordIntel =`<span style="color: ${intelColor}">INTEL</span>`;
 const wordStress =`<span style="color: ${riskDieColor}">Stress</span>`;
-const title = "Stress Roll";
+const title = "Harm Roll";
 const content = `
     <p>
         <b>If any Risk Die rolls equal to or greater than your highest roll</b>, you suffer a Harmful Consequence:
