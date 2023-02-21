@@ -1,3 +1,5 @@
+// Requires the Foundry Advanced Macros module to work https://github.com/mclemente/fvtt-advanced-macros
+
 let move = 0;
 if (args) {
     if(args[0]) {
