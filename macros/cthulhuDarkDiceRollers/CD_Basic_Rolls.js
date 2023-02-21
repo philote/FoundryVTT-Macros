@@ -261,11 +261,11 @@ async function asyncDialog({
                         // Build Dice list
                         let diceOutput = "";
                         dice.forEach(die => {
-                            diceOutput = diceOutput.concat(this.getDiceForOutput(die.rollVal, die.dieColor), " ");
+                            diceOutput = diceOutput.concat(getDiceForOutput(die.rollVal, die.dieColor), " ");
                         });
                         
                         // Initialize chat data.
-                        const chatContentMessage = this.chatContent(move, diceOutput, maxDie.rollVal, riskMessage);
+                        const chatContentMessage = chatContent(move, diceOutput, maxDie.rollVal, riskMessage);
                         const user = game.user.id;
                         const speaker = ChatMessage.getSpeaker({ actor: this.actor });
                         const rollMode = game.settings.get('core', 'rollMode');

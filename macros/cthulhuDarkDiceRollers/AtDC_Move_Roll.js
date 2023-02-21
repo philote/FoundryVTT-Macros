@@ -1,6 +1,6 @@
 // Requires the Foundry Advanced Macros module to work https://github.com/mclemente/fvtt-advanced-macros
 
-let move = 0;
+let move = 6;
 if (args) {
     if(args[0]) {
         move = args[0];
@@ -20,10 +20,17 @@ const wordStress =`<span style="color: ${riskDieColor}">Stress</span>`;
 const wordHeat =`<span style="color: ${heatColor}">HEAT</span>`;
 const stressMoveMessage = `
     <hr>
-    <div style="font-size: 18px"><b>
-        The situation causes you ${wordStress}, increase your ${wordStress} by one!
-        </br><i style="font-size: 12px">(Do not roll for ${wordStress} if prompted by the move.)</i></b>
+    <div style="font-size: 18px">
+        <b>The situation causes you ${wordStress}, increase your ${wordStress} by one!</b>
+        </br><i style="font-size: 12px">(Do not roll for ${wordStress} if prompted by the move.)</i>
+    <div>
+`;
 
+const harmMoveMessage = `
+    <hr>
+    <div style="font-size: 18px">
+        <b>You suffer a <i>Harmful Consequence</i>!</b>
+        </br><i style="color: ${takeThemOutDieColor}">Roll for Harm</i> to find out how bad it is.
     <div>
 `;
 
@@ -314,13 +321,14 @@ function getMaxDieMessage(moveNumber, maxDieNumber) {
     }
 }
 
-function chatContent(moveNumber, diceOutput, maxDieNumber, stressMessage) {
+function chatContent(moveNumber, diceOutput, maxDieNumber, stressMessage, harmMessage) {
     const moveName = dialogTitle(moveNumber);
     return `
         <p style="font-size: 1.5em;"><b>${moveName}</b> Result:</p>
         <p>${diceOutput}</p>
         <p>${getMaxDieMessage(moveNumber, maxDieNumber)}</p>
         ${stressMessage}
+        ${harmMessage}
     `;
 }
 
@@ -390,8 +398,6 @@ async function asyncDialog({
                                 rollVal: idRoll.result
                             });
                         };
-
-                        // Take them out Die
                         
                         if (document.getElementById("bonusDie") != null) {
                             if (document.getElementById("bonusDie").checked) {
@@ -406,10 +412,14 @@ async function asyncDialog({
                             }
                         }
 
+
+                        // Take them out Die
+                        const threatDice = [];
+
                         if (document.getElementById("threatHarmDie") != null) {
                             if (document.getElementById("threatHarmDie").checked) {
                                 let idRoll = await new Roll('1d6').evaluate({ async: true });
-                                dice.push({
+                                threatDice.push({
                                     name: "Threat Harm Die",
                                     dieColor: takeThemOutDieColor,
                                     isStress: false,
@@ -422,7 +432,7 @@ async function asyncDialog({
                         if (document.getElementById("threatSupernaturalDie") != null) {
                             if (document.getElementById("threatSupernaturalDie").checked) {
                                 let idRoll = await new Roll('1d6').evaluate({ async: true });
-                                dice.push({
+                                threatDice.push({
                                     name: "Threat Supernatural Harm Die",
                                     dieColor: takeThemOutDieColor,
                                     isStress: false,
@@ -435,7 +445,7 @@ async function asyncDialog({
                         if (document.getElementById("outnumberedDie") != null) {
                             if (document.getElementById("outnumberedDie").checked) {
                                 let idRoll = await new Roll('1d6').evaluate({ async: true });
-                                dice.push({
+                                threatDice.push({
                                     name: "Out Numbered Harm Die",
                                     dieColor: takeThemOutDieColor,
                                     isStress: false,
@@ -448,7 +458,7 @@ async function asyncDialog({
                         if (document.getElementById("weaponDie") != null) {
                             if (document.getElementById("weaponDie").checked) {
                                 let idRoll = await new Roll('1d6').evaluate({ async: true });
-                                dice.push({
+                                threatDice.push({
                                     name: "Weapon Harm Die",
                                     dieColor: takeThemOutDieColor,
                                     isStress: false,
@@ -461,7 +471,7 @@ async function asyncDialog({
                         if (document.getElementById("SupernaturalPowersDie1") != null) {
                             if (document.getElementById("SupernaturalPowersDie1").checked) {
                                 let idRoll = await new Roll('1d6').evaluate({ async: true });
-                                dice.push({
+                                threatDice.push({
                                     name: "Supernatural Powers Harm Die",
                                     dieColor: takeThemOutDieColor,
                                     isStress: false,
@@ -474,7 +484,7 @@ async function asyncDialog({
                         if (document.getElementById("SupernaturalPowersDie2") != null) {
                             if (document.getElementById("SupernaturalPowersDie2").checked) {
                                 let idRoll = await new Roll('1d6').evaluate({ async: true });
-                                dice.push({
+                                threatDice.push({
                                     name: "Supernatural Powers Harm Die",
                                     dieColor: takeThemOutDieColor,
                                     isStress: false,
@@ -487,7 +497,7 @@ async function asyncDialog({
                         if (document.getElementById("SupernaturalPowersDie3") != null) {
                             if (document.getElementById("SupernaturalPowersDie3").checked) {
                                 let idRoll = await new Roll('1d6').evaluate({ async: true });
-                                dice.push({
+                                threatDice.push({
                                     name: "Supernatural Powers Harm Die",
                                     dieColor: takeThemOutDieColor,
                                     isStress: false,
@@ -500,7 +510,7 @@ async function asyncDialog({
                         if (document.getElementById("SupernaturalPowersDie4") != null) {
                             if (document.getElementById("SupernaturalPowersDie4").checked) {
                                 let idRoll = await new Roll('1d6').evaluate({ async: true });
-                                dice.push({
+                                threatDice.push({
                                     name: "Supernatural Powers Harm Die",
                                     dieColor: takeThemOutDieColor,
                                     isStress: false,
@@ -512,45 +522,55 @@ async function asyncDialog({
 
                         // -----------------
 
-                        let diceOutput = "";
+                        const maxDie = dice.reduce((a, b) => (a.rollVal > b.rollVal) ? a : b);
 
-                        const maxDieValue = dice.reduce((a, b) => (a.rollVal > b.rollVal) ? a : b).rollVal;
-                        const setOfMaxDice = dice.filter(obj => {
-                            return obj.rollVal === maxDieValue
+                        // Determine if the stress die won
+                        let isStressDie = false;
+                        dice.every(die => {
+                            if ((die.rollVal == maxDie.rollVal) && die.isStress) {
+                                isStressDie = true;
+                                return false;
+                            }
+                            return true;
                         });
 
-                        // Stress
                         let stressMessage = "";
-                        var stressDieR = setOfMaxDice.find(obj => {
-                            return obj.isStress === true;
-                        });
-
-                        let maxDie = null
-                        if (stressDieR) {
+                        if (isStressDie) {
                             stressMessage = stressMoveMessage;
-                            maxDie = stressDieR;
-                        } else {
-                            maxDie = setOfMaxDice[0];
-                        };
+                        }
 
-                        // Harm
-                        var riskDieR = setOfMaxDice.find(obj => {
-                            return obj.isRisk === true;
-                        });
-
-                        if (riskDieR) {
-                            // TODO: Process Harm and add to message
-                        };
-                        
-                        // console.log(maxDie.name);
-                        // console.log(maxDie.isStress);
-                        // console.log(maxDie.isRisk);
-                        // console.log(maxDie.rollVal);
-
+                        // Build Dice list
+                        let diceOutput = "";
                         dice.forEach(die => {
                             diceOutput = diceOutput.concat(getDiceForOutput(die.rollVal, die.dieColor), " ");
                         });
-                        const chatContentMessage = chatContent(move, diceOutput, maxDie.rollVal, stressMessage);
+
+
+                        // threatDice
+                        let harmMessage = "";
+                        if (threatDice.length > 0) {
+                            const maxThreatDie = threatDice.reduce((a, b) => (a.rollVal > b.rollVal) ? a : b);
+                            
+                            if (maxThreatDie.rollVal >= maxDie.rollVal) {
+                                harmMessage = harmMoveMessage;
+                            }
+
+                            // Build Threat Dice list
+                            let threatDiceOutput = "";
+                            threatDice.forEach(die => {
+                                threatDiceOutput = threatDiceOutput.concat(getDiceForOutput(die.rollVal, die.dieColor), " ");
+                            });
+                            
+                            if (threatDiceOutput) {
+                                diceOutput = 
+                                `
+                                    ${diceOutput}</br></br><b style="font-size:1.2em">Risk Die:</b></br>${threatDiceOutput}
+                                `
+                            }
+                        }
+
+                        // Initialize chat data.
+                        const chatContentMessage = chatContent(move, diceOutput, maxDie.rollVal, stressMessage, harmMessage);
                         const user = game.user.id;
                         const speaker = ChatMessage.getSpeaker({ actor, token });
 
