@@ -29,38 +29,9 @@ function getDiceForOutput(dieNumber, colorHex) {
     }
 }
 
-const dice = [];
-
-let hdRoll = await new Roll('1d6').evaluate({ async: true });
-dice.push({
-    name: "Base Die",
-    dieColor: baseDieColor,
-    isStress: false,
-    rollVal: hdRoll.result
-});
-
-let diceOutput = "";
-
-const maxDieValue = dice.reduce((a, b) => (a.rollVal > b.rollVal) ? a : b).rollVal;
-const setOfMaxDice = dice.filter(obj => {
-    return obj.rollVal === maxDieValue
-});
-
-let maxDie = setOfMaxDice[0];
-
-console.log("maxDie.name "+maxDie.name);
-console.log("maxDie.rollVal "+maxDie.rollVal);
-
-const maxDieModified = parseInt(maxDie.rollVal);
-console.log("maxDieModified "+maxDieModified);
-console.log("maxDieModified "+maxDieModified);
-
-
-dice.forEach(die => {
-    diceOutput = diceOutput.concat(getDiceForOutput(die.rollVal, die.dieColor), " ");
-});
+let insightRoll = await new Roll('1d6').evaluate({ async: true });
+let diceOutput = getDiceForOutput(insightRoll.result, baseDieColor);
 const chatContentMessage = chatContent(diceOutput);
-
 const user = game.user.id;
 const speaker = ChatMessage.getSpeaker({ actor, token });
 

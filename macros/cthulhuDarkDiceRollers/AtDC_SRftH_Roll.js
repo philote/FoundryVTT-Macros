@@ -1,9 +1,11 @@
+// Requires the Foundry Advanced Macros module to work https://github.com/mclemente/fvtt-advanced-macros
+
 let move = 0;
 if (args) {
     if(args[0]) {
         move = args[0];
     }
-}
+} 
 
 const anchorColor = "#2624a6";
 const heatColor = "#eb7602";

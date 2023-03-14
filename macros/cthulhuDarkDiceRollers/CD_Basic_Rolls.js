@@ -1,3 +1,5 @@
+// Requires the Foundry Advanced Macros module to work https://github.com/mclemente/fvtt-advanced-macros
+
 let move = 0;
 if (args) {
     if (args[0]) {
@@ -239,28 +241,40 @@ async function asyncDialog({
                             });
                         };
 
-                        let diceOutput = ""
-
-                        // TODO add the risk die logic and change it wher risk has to be higher than all other die
                         const maxDie = dice.reduce((a, b) => (a.rollVal > b.rollVal) ? a : b);
 
+                        // Determine if the risk die won
+                        let isRiskDie = false;
+                        dice.every(die => {
+                          if ((die.rollVal == maxDie.rollVal) && die.isRisk) {
+                            isRiskDie = true;
+                            return false;
+                          }
+                          return true;
+                        });
+
                         let riskMessage = "";
-                        if (maxDie.isRisk) {
+                        if (isRiskDie) {
                             riskMessage = riskMoveMessage;
                         }
 
-
+                        // Build Dice list
+                        let diceOutput = "";
                         dice.forEach(die => {
                             diceOutput = diceOutput.concat(getDiceForOutput(die.rollVal, die.dieColor), " ");
                         });
+                        
+                        // Initialize chat data.
                         const chatContentMessage = chatContent(move, diceOutput, maxDie.rollVal, riskMessage);
                         const user = game.user.id;
-                        const speaker = ChatMessage.getSpeaker({ actor, token });
+                        const speaker = ChatMessage.getSpeaker({ actor: this.actor });
+                        const rollMode = game.settings.get('core', 'rollMode');
 
                         ChatMessage.create({
-                            user: user,
-                            speaker: speaker,
-                            content: chatContentMessage
+                          user: user,
+                          speaker: speaker,
+                          rollMode: rollMode,
+                          content: chatContentMessage
                         });
 
                         // ----
