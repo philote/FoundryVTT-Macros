@@ -42,7 +42,8 @@
     align-items: center;
 }
 
-form .form-group, form .form-group-stacked {
+form .form-group,
+form .form-group-stacked {
     align-items: normal;
 }
 
@@ -59,12 +60,21 @@ form .form-group, form .form-group-stacked {
     background-color: #525b5a;
 }
 
+.sheet.journal-entry .journal-entry-page * {
+    color: var(--color-text-dark-primary);
+}
+
 .dialog .dialog-buttons button {
     background: #8C1C1C;
     color: var(--color-text-light-primary);
 }
 
-input[type="text"], input[type="number"], input[type="password"], input[type="date"], input[type="time"], input[type="search"] {
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="date"],
+input[type="time"],
+input[type="search"] {
     color: var(--color-text-light-primary);
     background: rgba(256, 256, 256, 0.05);
 }
@@ -79,7 +89,8 @@ select {
     color: #F29829;
 }
 
-option, optgroup {
+option,
+optgroup {
     background: #36403F;
 }
 
@@ -124,24 +135,27 @@ form .hint {
     background-color: #5969676b;
 }
 
-#module-management .package-list .package-title, #module-management .package-list .package-metadata, #module-management .package-list .package-description {
+#module-management .package-list .package-title,
+#module-management .package-list .package-metadata,
+#module-management .package-list .package-description {
     color: var(--color-text-light-primary);
 }
 
 #vtta-tokenizer div.view-layer-control {
-  background-color: #5969676b;
+    background-color: #5969676b;
 }
 
-#vtta-tokenizer div.view-layer-control .section, #vtta-tokenizer .section {
-  background-color: #36403fcf;
+#vtta-tokenizer div.view-layer-control .section,
+#vtta-tokenizer .section {
+    background-color: #36403fcf;
 }
 
 #vtta-tokenizer div.menu {
-  background-color: #5969676b;
+    background-color: #5969676b;
 }
 
 #vtta-tokenizer div.section {
-  background-color: #36403fcf;
+    background-color: #36403fcf;
 }
 
 /* button:disabled {
@@ -186,34 +200,35 @@ form button {
     word-break: break-all;
     cursor: pointer;
 }
+
 /* ---- */
 
 .css_header_stress {
     color: var(--color-text-light-primary);
     text-shadow: 2px 2px #26231D;
-	font-size: 20px;
+    font-size: 20px;
     font-family: 'Black Ops One', cursive;
-	line-height: 1.5;
+    line-height: 1.5;
 }
 
-.css_header_stress > .custom-system-rollable {
+.css_header_stress>.custom-system-rollable {
     color: var(--color-text-light-primary);
 }
 
 .css_header {
     color: #A6652D;
     text-shadow: 2px 2px #26231D;
-	font-size: 20px;
+    font-size: 20px;
     font-family: 'Black Ops One', cursive;
-	line-height: 1.5;
+    line-height: 1.5;
 }
 
 .css_subheader {
     color: #a6652dbe;
     text-shadow: 2px 2px #26231D;
-	font-size: 20px;
+    font-size: 20px;
     font-family: 'Quantico', sans-serif;
-	line-height: 1;
+    line-height: 1;
 }
 
 .css_label {
@@ -227,29 +242,29 @@ form button {
 
 /* custom */
 .css_Panel_Top {
-	margin: 0px;
-	padding: 0px;
-	border: 1px solid var(--color-border-light-2);
+    margin: 0px;
+    padding: 0px;
+    border: 1px solid var(--color-border-light-2);
     background-color: #5969676b;
     border-radius: 5px;
 }
 
 .css_Panel_Top_Inside_intel {
-	margin: 5px;
-	padding: 5px;
-	background-color: #36403F;
-	border: 1.5px solid #A6652D;
+    margin: 5px;
+    padding: 5px;
+    background-color: #36403F;
+    border: 1.5px solid #A6652D;
     border-radius: 10px;
-	background-origin: padding-box;
+    background-origin: padding-box;
 }
 
 .css_Panel_Top_Inside_stress {
-	margin: 5px;
-	padding: 5px;
-	background-color: #8c1c1c7c;
-	border: 1.5px solid var(--color-border-dark-1);
+    margin: 5px;
+    padding: 5px;
+    background-color: #8c1c1c7c;
+    border: 1.5px solid var(--color-border-dark-1);
     border-radius: 10px;
-	background-origin: padding-box;
+    background-origin: padding-box;
 }
 
 .css_Panel_Top_Inside_callout {
@@ -262,19 +277,19 @@ form button {
 }
 
 .css_Panel_bottom {
-	margin: 5px;
-	padding: 10px 5px;
-	background-color: #36403F;
-	border: 1.5px solid var(--color-border-dark-1);
+    margin: 5px;
+    padding: 10px 5px;
+    background-color: #36403F;
+    border: 1.5px solid var(--color-border-dark-1);
     border-radius: 10px;
-	background-origin: padding-box;
+    background-origin: padding-box;
 }
 
 .css_Tabbed_Panel {
-	margin: 0px;
-	padding: 0px;
+    margin: 0px;
+    padding: 0px;
     background-color: #36403f5f;
-	background-origin: padding-box;
+    background-origin: padding-box;
 }
 
 .css_table_top2 table {
@@ -303,6 +318,7 @@ form button {
     width: 98%;
 }
 
-.grid, .grid-2col {
+.grid,
+.grid-2col {
     gap: 5px;
 }
